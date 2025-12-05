@@ -1,0 +1,6 @@
+package com.sahil.lovable_clone.dto.project;
+
+public record ProjectRequest(
+        String name
+) {
+}
