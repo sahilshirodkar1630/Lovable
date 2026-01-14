@@ -1,15 +1,7 @@
 package com.sahil.lovable_clone.entity;
 
-import jakarta.persistence.Entity;
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.experimental.FieldDefaults;
-
 import java.time.Instant;
 
-@Entity
-@Data
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UsageLog {
 
     Long id;
@@ -21,9 +13,7 @@ public class UsageLog {
     Integer tokensUsed;
     Integer durationMs;
 
-    String metaData; // JSON of {model_used,prompt_used}
+    String metaData; // JSON of {model_used, prompt_used},
 
     Instant createdAt;
-
-
 }

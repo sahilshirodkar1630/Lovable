@@ -1,33 +1,32 @@
 package com.sahil.lovable_clone.entity;
 
+
 import com.sahil.lovable_clone.enums.SubscriptionStatus;
-import jakarta.persistence.Entity;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import java.time.Instant;
 
-@Entity
-@Data
+@Getter
+@Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Subscription {
 
     Long id;
 
-    User userId;
-
-    Plan planId;
-
-    String stripeCustomerId; //
-    String stripeSubscriptionId; //
+    User user;
+    Plan plan;
 
     SubscriptionStatus status;
 
-    Instant currentPeriodStart; // when the subscription period starts
-    Instant currentPeriodEnd; //when the subscription period ends
+    String stripeCustomerId;
+    String stripeSubscriptionId;
 
-    Boolean cancelAtPeriodEnd = false; // if the user ants to cancel subscription at period ends he can
+    Instant currentPeriodStart;
+    Instant currentPeriodEnd;
+    Boolean cancelAtPeriodEnd = false;
 
     Instant createdAt;
     Instant updatedAt;

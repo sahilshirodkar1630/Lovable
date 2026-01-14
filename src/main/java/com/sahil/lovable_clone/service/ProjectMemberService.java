@@ -5,9 +5,15 @@ import com.sahil.lovable_clone.dto.member.MemberResponse;
 import com.sahil.lovable_clone.dto.member.UpdateMemberRoleRequest;
 import com.sahil.lovable_clone.dto.project.ProjectRequest;
 
+import java.util.List;
+
 public interface ProjectMemberService {
-    MemberResponse getProjectMembers(Long projectId, Long userId);
-    MemberResponse inviteMember(Long projectId, InviteMemberRequest request, Long userId);
-    MemberResponse updateMemberRole(Long memberId, Long projectId, UpdateMemberRoleRequest request, Long userId);
-    void deleteProjectMember(Long memberId, Long projectId, Long userId);
+    List<MemberResponse> getProjectMembers(Long projectId);
+
+    MemberResponse inviteMember(Long projectId, InviteMemberRequest request);
+
+    MemberResponse updateMemberRole(Long projectId, Long memberId, UpdateMemberRoleRequest request);
+
+    void removeProjectMember(Long projectId, Long memberId);
 }
+

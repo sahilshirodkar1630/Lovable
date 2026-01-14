@@ -1,14 +1,14 @@
 package com.sahil.lovable_clone.entity;
 
-import jakarta.persistence.Entity;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import java.time.Instant;
 
-@Entity
-@Data
+@Getter
+@Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ChatSession {
 
@@ -21,6 +21,5 @@ public class ChatSession {
     Instant createdAt;
     Instant updatedAt;
 
-    Instant deletedAt;
-
+    Instant deletedAt; //soft delete
 }

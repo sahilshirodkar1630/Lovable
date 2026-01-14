@@ -1,31 +1,45 @@
 package com.sahil.lovable_clone.entity;
 
-import jakarta.persistence.Entity;
-import lombok.AccessLevel;
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.Collection;
+import java.util.List;
 
+@Getter
+@Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-@Data
-@FieldDefaults(level = AccessLevel.PRIVATE) // used to set access level at entity level
-public class User {
-    //camelCase for entities
-    //snakecase or sql tables
-     Long id;
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Table(name = "users")
+public class User implements UserDetails {
 
-     String email;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
-     String passwordHash;
-     String name;
+    String username;
+    String password;
+    String name;
 
-     String avatarUrl;
+    @CreationTimestamp
+    Instant createdAt;
 
-     Instant createdAt;
-     Instant updatedAt;
+    @UpdateTimestamp
+    Instant updatedAt;
 
-     Instant deletedAt; // soft delete user
+    Instant deletedAt; //soft delete
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
+    }
 }
